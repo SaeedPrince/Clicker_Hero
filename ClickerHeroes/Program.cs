@@ -9,10 +9,9 @@ namespace ClickerHeroes
 {
     /*
     New features will be: 
-    1- Damage per second
-    2- Boss
-    3- Audio
-    4- Complex Screen
+    1- Complex Screen
+    2- Audio
+    3- Boss
     */
     class Program
     {

@@ -28,9 +28,11 @@ namespace ClickerHeroes
             thePlayer = theGame.GetPlayer();
             theLevel = theGame.GetLevel();
             string sActionFeedback = "";
+           // theGame.GetScreen().ShowPlayerInstructions();
             do
             {
-                if(!bTimerAlreadyEnabled && thePlayer.bHaveAnyDamagePerSecondHero)
+                theGame.GetScreen().ComplexScreenShow(theGame.sCombineAction, sActionFeedback, thePlayer.GetHeroArray(), thePlayer.GetGold(), theLevel, theLevel.getActive_Monster());
+                if (!bTimerAlreadyEnabled && thePlayer.bHaveAnyDamagePerSecondHero)
                 {
                     bTimerAlreadyEnabled = true;
                     SetTimer(theGame);
@@ -38,7 +40,7 @@ namespace ClickerHeroes
                 theInput = new Input();
                 theGame.SetInput(theInput.GetAnInput());
                 sActionFeedback = theGame.DoAction();
-                theGame.GetScreen().SimpleScreenShow(theGame.sCombineAction, sActionFeedback, thePlayer.GetHeroArray(), thePlayer.GetGold(), theLevel, theLevel.getActive_Monster());
+                theGame.GetScreen().ComplexScreenShow(theGame.sCombineAction, sActionFeedback, thePlayer.GetHeroArray(), thePlayer.GetGold(), theLevel, theLevel.getActive_Monster());
             } while (true);
 
             // End of program

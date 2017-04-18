@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ClickerHeroes
 {
@@ -44,7 +45,53 @@ namespace ClickerHeroes
 
         public void ComplexScreenShow(string sAction, string sFeedback, Hero[] inpHero, float inpGold, Level inpLevel, Monster inpMonster)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("*-------------- Player Infos ------------------*\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("* GOLD: {0}  ||  LEVEL: {1} || MONSTER IN LVL: {2}",inpGold,inpLevel.getActualLvl(),inpMonster.getMonsterName());
+            Console.WriteLine("                                                  ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("*-------------- Heros to Upgrade --------------*\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("*                                              ");
+            Console.WriteLine("*{0}                                           ",inpHero[0].GetName());
+           
+            //Saee Here we can see first with is possible to buy the hero before print on the screen on heros to upgrade.
+            //Im trying to figure it out how we can clear the console and print it this again, i tried to use the program class loop that you did
+            //but its not working.
+        }
 
+        public void ShowPlayerInstructions()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("*- Welcome to Clicker Hero Game! -*\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("How to play : Use keyboard numbers to select wich Hero\nyou want to upgrade based on how much of gold you have.\n");
+            Console.WriteLine("Instructions : 1,2,3,4,5,6,7,8,9,0 to upgrade specific hero.");
+            Console.WriteLine("Instructions:: spacebar to hit monsters.");
+            ShowCountDown(15);
+            Console.Clear();
+        }
+
+        public void ShowCountDown(int value)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            while (value >= 0)
+            {
+                Console.WriteLine("\nGame will begin in {0} sec..", value);
+                Thread.Sleep(1000);
+                value--;
+                ClearLastLine();
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void ClearLastLine()
+        {
+            Console.SetCursorPosition(0, Console.CursorTop - 2);
+            Console.Write(new string(' ', Console.BufferWidth));
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
         }
     }
 }

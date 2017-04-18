@@ -42,7 +42,7 @@ namespace ClickerHeroes
         // Constructors
         public Hero(int iHeroType)
         {
-            string[] HeroName = new string[] { "Cid", "TreBea", "Brawlr", "Prince", "Fisher", "Cliker", "Samuri", "Leon", "Seer", "Blades" };
+            string[] HeroName = new string[] { "Cid   ", "TreBea", "Brawlr", "Prince", "Fisher", "Cliker", "Samuri", "Leon  ", "Seer  ", "Blades" };
             sName = HeroName[iHeroType];
             iType = iHeroType;
             iLevel = 0;

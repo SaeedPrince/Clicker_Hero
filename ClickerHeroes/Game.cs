@@ -13,6 +13,7 @@ namespace ClickerHeroes
         public const int ACTION_UPGRADE_HERO = 2;
         public const int ACTION_CHANGE_LEVEL = 3;
         public const int ACTION_SECOND = 4;
+        public const int ACTION_QUIT = 5;
         public const int PARAMETER_PLUS = 10;
         public const int PARAMETER_MINUS = 11;
         public const int KEY_MINUS = 49;
@@ -20,6 +21,7 @@ namespace ClickerHeroes
         public const int FEEDBACK_KILL_MONTSERS_FIRST = 1;
         public const int FEEDBACK_NOT_ENOUGH_GOLD = 2;
         public const int FEEDBACK_FIRST_LEVEL = 3;
+        public const int FEEDBACK_QUIT = 4;
         // Variables
         private Player myPlayer;
         private Screen myScreen;
@@ -51,6 +53,9 @@ namespace ClickerHeroes
                     case ConsoleKey.OemPlus:
                     case ConsoleKey.OemMinus:
                         iReturn = ACTION_CHANGE_LEVEL;
+                        break;
+                    case ConsoleKey.Escape:
+                        iReturn = ACTION_QUIT;
                         break;
                     default:
                         iReturn = ACTION_SECOND;
@@ -90,6 +95,7 @@ namespace ClickerHeroes
                 return iReturn;
             }
         }
+
         public string sCombineAction
         {
             get
@@ -106,6 +112,9 @@ namespace ClickerHeroes
                     case ACTION_CHANGE_LEVEL:
                         sReturn = "Change level";
                         break;
+                    case ACTION_QUIT:
+                        sReturn = "Quit the game";
+                        break;
                 }
 
                 return sReturn;
@@ -119,7 +128,7 @@ namespace ClickerHeroes
             myScreen = new Screen();
             myAudio = new Audio();
             myLevel = new Level();
-            sActionFeedbacks = new string[] { "Action Done.", "You need to kill all the monsters first.", "Not enough gold.", "You are at the first level." };
+            sActionFeedbacks = new string[] { "Action Done.", "You need to kill all the monsters first.", "Not enough gold.", "You are at the first level.", "QUIT"};
         }
         
         // Getters
@@ -195,6 +204,9 @@ namespace ClickerHeroes
                             sReturn = sActionFeedbacks[FEEDBACK_FIRST_LEVEL];
                         }
                     }
+                    break;
+                case ACTION_QUIT:
+                    sReturn = sActionFeedbacks[FEEDBACK_QUIT];
                     break;
             }
             return sReturn;

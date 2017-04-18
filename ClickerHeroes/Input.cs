@@ -8,7 +8,6 @@ namespace ClickerHeroes
 {
     class Input
     {
-        // Constants
         // Variables
         private ConsoleKey cCurrentInput
         {
@@ -26,22 +25,12 @@ namespace ClickerHeroes
         public Input()
         {
             cValidInputArray = new ConsoleKey[] { ConsoleKey.Spacebar,ConsoleKey.D1, ConsoleKey.D2, ConsoleKey.D3, ConsoleKey.D4, ConsoleKey.D5
-            ,ConsoleKey.D6,ConsoleKey.D7,ConsoleKey.D8,ConsoleKey.D9,ConsoleKey.D0,ConsoleKey.OemPlus,ConsoleKey.OemMinus};
+            ,ConsoleKey.D6,ConsoleKey.D7,ConsoleKey.D8,ConsoleKey.D9,ConsoleKey.D0,ConsoleKey.OemPlus,ConsoleKey.OemMinus,ConsoleKey.Escape};
         }
 
         public ConsoleKey GetAnInput()
         {
             return cCurrentInput;
-        }
-
-        private ConsoleKey GetAValidInput()
-        {
-            ConsoleKey cReturn ;
-            do
-            {
-                cReturn = Console.ReadKey(false).Key;
-            } while (!IsValid(cReturn));
-            return cReturn;
         }
 
         private bool IsValid(ConsoleKey cInput)
